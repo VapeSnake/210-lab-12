@@ -12,12 +12,12 @@ const int SIZE = 30; // Size of the array
 //   std::array - A container that encapsulates fixed size arrays. (Check)
 //   size() - A member function of std::array that returns the number of elements in the array. (Check)
 //   File I/O - Reading from and writing to files using fstream. (Check)
-//   Algorithms - Using algorithms like sort from the <algorithm> library.
-//   Accumulate - Using the accumulate function from the <numeric> library to sum elements in an array.
+//   Algorithms - Using algorithms like sort from the <algorithm> library. (Check)
+//   Accumulate - Using the accumulate function from the <numeric> library to sum elements in an array. (Check)
 //  .at() - A member function of std::array that provides bounds-checked access to elements. (Check)
 //  .begin() and .end() - Member functions of std::array that return iterators to the beginning and end of the array, respectively. (Check)
 //  rbegin() and rend() - Member functions of std::array that return reverse iterators to the beginning and end of the array, respectively. (Check)
-//  find() - An algorithm from the <algorithm> library that searches for a specific value in a range of elements using an iterator.
+//  find() - An algorithm from the <algorithm> library that searches for a specific value in a range of elements using an iterator. (Check).
 
 int main()
 {
@@ -67,5 +67,31 @@ int main()
     cout << "\n\nCalculating the sum of the array elements... \n";
     int sum = accumulate(randomArray.begin(), randomArray.end(), 0); // Calculate the sum of the elements in the array using accumulate function.
 
+    cout << "The sum of the array elements is: " << sum << endl; // Display the sum of the array elements.
+
+    cout << "\n\nSearching for a specific value (e.g., 42) in the array... \n";
+    int target = 78;                                                                      // Example target value to search for in the array.
+    array<int, SIZE>::iterator it = find(randomArray.begin(), randomArray.end(), target); // Searches for target value in the array using find function.
+    cout << "Value " << target;
+    if (it != randomArray.end())
+    {
+        cout << " found at index: " << it - randomArray.begin() << endl; // If found, display the index of the target value.
+    }
+    else
+    {
+        cout << " not found in the array." << endl; // If not found, indicate that the value is not in the array.
+    }
+
+    int target = 99;                                                                      // Example target that is not in the array to demonstrate the not found case.
+    array<int, SIZE>::iterator it = find(randomArray.begin(), randomArray.end(), target); // Searches for target value in the array using find function.
+    cout << "Value " << target;
+    if (it != randomArray.end())
+    {
+        cout << " found at index: " << it - randomArray.begin() << endl; // If found, display the index of the target value.
+    }
+    else
+    {
+        cout << " not found in the array." << endl; // If not found, indicate that the value is not in the array.
+    }
     return 0;
 }
