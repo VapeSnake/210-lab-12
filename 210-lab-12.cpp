@@ -2,7 +2,7 @@
 #include <iostream>
 #include <array>     // For std::array
 #include <fstream>   // For file I/O
-#include <algorithm> // For sort and reverse
+#include <algorithm> // For sort and find
 #include <numeric>   // For accumulate
 using namespace std;
 
@@ -12,11 +12,11 @@ const int SIZE = 30; // Size of the array
 //   std::array - A container that encapsulates fixed size arrays. (Check)
 //   size() - A member function of std::array that returns the number of elements in the array. (Check)
 //   File I/O - Reading from and writing to files using fstream. (Check)
-//   Algorithms - Using algorithms like sort and reverse from the <algorithm> library.
+//   Algorithms - Using algorithms like sort from the <algorithm> library.
 //   Accumulate - Using the accumulate function from the <numeric> library to sum elements in an array.
 //  .at() - A member function of std::array that provides bounds-checked access to elements. (Check)
-//  .begin() and .end() - Member functions of std::array that return iterators to the beginning and end of the array, respectively.
-//  rbegin() and rend() - Member functions of std::array that return reverse iterators to the beginning and end of the array, respectively.
+//  .begin() and .end() - Member functions of std::array that return iterators to the beginning and end of the array, respectively. (Check)
+//  rbegin() and rend() - Member functions of std::array that return reverse iterators to the beginning and end of the array, respectively. (Check)
 //  find() - An algorithm from the <algorithm> library that searches for a specific value in a range of elements using an iterator.
 
 int main()
@@ -24,7 +24,7 @@ int main()
     array<int, SIZE> randomArray;                                       // Declare an empty array of integers with size 30.
     cout << "The size of the array is: " << randomArray.size() << endl; // Display the size of the array.
 
-    ifstream inputFile("random_numbers.txt"); // Open the file containing random numbers.
+    ifstream inputFile("Random30Elements.txt"); // Open the file containing random numbers.
     if (!inputFile)
     {
         cerr << "Error opening file." << endl;
@@ -40,11 +40,21 @@ int main()
 
     inputFile.close(); // Closes file after reading.
 
-    cout << "Displaying array elements \n: ";
+    cout << "Displaying array elements: \n";
     for (const int num : randomArray)
     {
         cout << num << " "; // Display the elements of the array using a range-based for loop.
     }
+
+    cout << "\n\nSorting the array in ascending order... \n";
+    sort(randomArray.begin(), randomArray.end()); // Sorts the array in ascending order using sort function and .begin & .end iterators.
+
+    cout << "Sorted array elements: \n";
+    for (const int num : randomArray)
+    {
+        cout << num << " "; // Display the sorted elements of the array.
+    }
+
 
     return 0;
 }
