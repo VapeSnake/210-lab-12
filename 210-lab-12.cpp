@@ -55,6 +55,17 @@ int main()
         cout << num << " "; // Display the sorted elements of the array.
     }
 
+    cout << "\n\nReversing the array... \n";
+    sort(randomArray.rbegin(), randomArray.rend()); // Reverses the order of the elements in the array using reverse iterators.
+
+    cout << "Reversed array elements: \n";
+    for (const int num : randomArray)
+    {
+        cout << num << " "; // Display the reversed elements of the array.
+    }
+
+    cout << "\n\nCalculating the sum of the array elements... \n";
+    int sum = accumulate(randomArray.begin(), randomArray.end(), 0); // Calculate the sum of the elements in the array using accumulate function.
 
     return 0;
 }
